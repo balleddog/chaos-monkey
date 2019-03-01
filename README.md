@@ -39,14 +39,14 @@ Add a relation between Chaos Monkey and the service to be affected:
 
 Start running Chaos Monkey: 
 
-`juju action do chaos-monkey/0 start`
+`juju run-action chaos-monkey/0 start`
 
 The above command should have an output similar to the following: 
 `Action queued with id: 8aad6345-72d4-46ea-8449-a91dd890c441`
 
 Using the `id`, fetch a result:
 
-`juju action fetch 8aad6345-72d4-46ea-8449-a91dd890c44`
+`juju show-action-output 8aad6345-72d4-46ea-8449-a91dd890c44`
 
 The above command should have an output similar to the following:
 
@@ -66,13 +66,13 @@ timing:
 ```
 Use the `show-logs` action to print the log of operations that were run:
 
-`juju action do chaos-monkey/0 show-logs monkey-id=1cdd652f-83e9-45f1-8a73-8ab23347840b`
+`juju run-action chaos-monkey/0 show-logs monkey-id=1cdd652f-83e9-45f1-8a73-8ab23347840b`
 
 The above command should have an output similar to the following: `Action queued with id: 7a016410-1542-47d1-8747-684e75851691`
 
 Finally, display the log by fetching the result:
 
-`juju action fetch 7a016410-1542-47d1-8747-684e75851691`
+`juju show-action-output 7a016410-1542-47d1-8747-684e75851691`
 
 As you can see from the following log, Chaos Monkey injected a delay in the network traffic :
 ```
@@ -86,7 +86,7 @@ results:
 
 To see the full list of available actions and action parameters, use the following command:
 
-`juju action defined --schema chaos-monkey`
+`juju actions --schema chaos-monkey`
 
 
 
